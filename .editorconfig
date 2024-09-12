@@ -1,0 +1,13 @@
+[*.cs]
+
+# IDE0210: Converter para instruções de alto-nível
+csharp_style_prefer_top_level_statements = true
+
+# IDE0001: Simplificar Nomes
+dotnet_diagnostic.IDE0001.severity = none
+
+# CA1305: Especificar IFormatProvider
+dotnet_diagnostic.CA1305.severity = none
+
+# CS8604: Possível argumento de referência nula.
+dotnet_diagnostic.CS8604.severity = none
