@@ -1,128 +1,176 @@
-import java.util.Scanner;
+﻿using System;
 
-public class EX13_Calc {
+namespace Calculator;
 
-    public static void main(String[] args) {
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Menu();
 
-        /*
-         * • • Criar uma calculadora de operações básicas:
-         * - soma, subtração, multiplicação e divisão
-         * – o algoritmo deve ler dois números eo sinal correspondente à operação
-         * desejada;
-         * – utilize o tipo char para ler a operação;
-         * – no final deve ser impresso o resultado.
-         * • Restrições:
-         * se o sinal digitado não corresponder a uma operação...
-         * para a operação de divisão verificar se o divisor é válido (maior que zero)!
-         * caso seja menor ou igual a zero, informar a mensagem “Impossível dividir‼”
-         */
+    }
+    static void Menu()
+    {
+        Console.Clear();
 
-        Scanner entradaDados = new Scanner(System.in);
+        Console.WriteLine("Bem vindo ao Calculator! O que deseja fazer?");
+        Console.WriteLine("1 - Soma");
+        Console.WriteLine("2 - Subtração");
+        Console.WriteLine("3 - Divisão");
+        Console.WriteLine("4 - Multiplicação");
+        Console.WriteLine("5 - Potenciação");
+        Console.WriteLine("6 - Raiz Quadrada");
+        Console.WriteLine("0 - Sair");
 
-        System.out.println("Bem vindo a Calculadora! Vamos começar.");
-        System.out.println("Digite: " +
-                " 1 - Soma;" +
-                " 2 - Subtração;" +
-                " 3 - Multiplicação;" +
-                " 4 - Divisão;");
-        double operacao = entradaDados.nextDouble();
-        System.out.println("");
+        Console.WriteLine("-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|");
+        Console.WriteLine("Selecione uma opção: ");
+        short resultado = short.Parse(Console.ReadLine());
 
-        if (operacao == 1) {
-            System.out.print(
-                    "Você digitou a operação de soma! Para continuar digite um numero para o primeiro algarismo: ");
-            if (!entradaDados.hasNextDouble()) { // Verifica se NÃO é um número
-                System.out.println("Entrada Inválida!");
-                System.exit(0);
-            }
-            double num1 = entradaDados.nextDouble();
-
-            System.out.print("Agora digite o segundo numero: ");
-            if (!entradaDados.hasNextDouble()) { // Verifica se NÃO é um número
-                System.out.println("Entrada Inválida!");
-                System.exit(0);
-            }
-
-            double num2 = entradaDados.nextDouble();
-            System.out.println("");
-            double resultadoSoma = num1 + num2;
-            System.out.println("Os numeros que você colocou foi: " + num1 + " e " + num2
-                    + " seu resultado da Soma será: " + resultadoSoma);
-
-        } else if (operacao == 2) {
-            System.out.print(
-                    "Você digitou a operação de Subtração! Para continuar digite um numero para o primeiro algarismo: ");
-            if (!entradaDados.hasNextDouble()) {
-                System.out.println("Entrada Inválida!");
-                System.exit(0);
-            }
-            double num1 = entradaDados.nextDouble();
-
-            System.out.print("Agora digite o segundo numero: ");
-            if (!entradaDados.hasNextDouble()) {
-                System.out.println("Entrada Inválida!");
-                System.exit(0);
-            }
-            double num2 = entradaDados.nextDouble();
-
-            System.out.println("");
-            double resultadoSub = num1 - num2;
-            System.out.println("Os numeros que você colocou foi: " + num1 + " e " + num2
-                    + " seu resultado da Subtração será: " + resultadoSub);
-
-        } else if (operacao == 3) {
-            System.out.print(
-                    "Você digitou a operação de Multiplicação! Para continuar digite um numero para o primeiro algarismo: ");
-            if (!entradaDados.hasNextDouble()) {
-                System.out.println("Entrada Inválida!");
-                System.exit(0);
-            }
-            double num1 = entradaDados.nextDouble();
-
-            System.out.print("Agora digite o segundo numero: ");
-            if (!entradaDados.hasNextDouble()) {
-                System.out.println("Entrada Inválida!");
-                System.exit(0);
-            }
-            double num2 = entradaDados.nextDouble();
-            System.out.println("");
-            double resultadoMult = num1 * num2;
-            System.out.println("Os numeros que você colocou foi: " + num1 + " e " + num2
-                    + " seu resultado da Multiplicação será: " + resultadoMult);
-
-        } else if (operacao == 4) {
-            System.out.print(
-                    "Você digitou a operação de Divisão! Para continuar digite um numero para o primeiro algarismo: ");
-            if (!entradaDados.hasNextDouble()) { // Verifica se NÃO é um número
-                System.out.println("Entrada Inválida!");
-                System.exit(0);
-            }
-            double num1 = entradaDados.nextDouble();
-            if (num1 <= 0) {
-                System.out.println("Numero Invalido!");
-                System.exit(0);
-            }
-
-            System.out.print("Agora digite o segundo numero: ");
-            if (!entradaDados.hasNextDouble()) { // Verifica se NÃO é um número
-                System.out.println("Entrada Inválida!");
-                System.exit(0);
-            }
-            double num2 = entradaDados.nextDouble();
-            if (num1 <= 0) {
-                System.out.println("Numero Invalido!");
-                System.exit(0);
-            }
-            System.out.println("");
-            double resultadoDiv = num1 / num2;
-            if (resultadoDiv == 0) {
-                System.out.println("Operação Invalida");
-                System.exit(0);
-            }
-            System.out.println("Os numeros que você colocou foi: " + num1 + " e " + num2
-                    + " seu resultado da divisão será: " + resultadoDiv);
+        switch (resultado)
+        {
+            case 1: Soma(); break;
+            case 2: Subtracao(); break;
+            case 3: Divisao(); break;
+            case 4: Multiplicacao(); break;
+            case 5: Potenciacao(); break;
+            case 6: Radicializacao(); break;
+            default: Finalizacao(); break;
         }
-        entradaDados.close();
+    }
 
+    static void Soma()
+    {
+        // Para limpar o terminal antes de rodar
+        Console.Clear();
+
+        // Inserindo o primeiro valor
+        Console.WriteLine("Insira o primeiro valor: ");
+        double valor1 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+
+        // Inserindo o segundo valor 
+        Console.WriteLine("Insira um segundo valor: ");
+        double valor2 = double.Parse(Console.ReadLine());
+
+
+
+        double resultado = valor1 + valor2;
+
+        Console.WriteLine("O resultado da soma é: " + resultado);
+        Console.ReadKey();
+        Menu();
+    }
+
+    static void Subtracao()
+    {
+
+        Console.Clear();
+
+        Console.WriteLine("Insira o primeiro valor: ");
+        double valor1 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+
+        // Inserindo o segundo valor 
+        Console.WriteLine("Insira um segundo valor: ");
+        double valor2 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+
+        double resultado = valor1 - valor2;
+        Console.WriteLine($"O resultado da subtração é: {resultado}");
+        Console.ReadKey();
+        Menu();
+
+    }
+
+    static void Divisao()
+    {
+
+        Console.Clear();
+
+        Console.WriteLine("Insira o primeiro valor");
+        double valor1 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+
+        // Inserindo o segundo valor 
+        Console.WriteLine("Insira um segundo valor: ");
+        double valor2 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+
+        double resultado = valor1 / valor2;
+        Console.WriteLine($"O resultado da subtração é: {resultado}");
+        Console.ReadKey();
+        Menu();
+
+    }
+
+    static void Multiplicacao()
+    {
+        Console.Clear();
+
+        Console.WriteLine("Insira o primeiro valor: ");
+        double valor1 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+
+        Console.WriteLine("Insira o segundo valor: ");
+        double valor2 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+
+        double resultado = valor1 * valor2;
+        Console.WriteLine($"Seu resultado é: {resultado}");
+        Console.ReadKey();
+        Menu();
+    }
+
+    static void Finalizacao()
+    {
+        Console.WriteLine("Programa finalizado com sucesso, obrigado por utilizar  o Calculator! Tenha um otimo dia.");
+        System.Environment.Exit(0);
+    }
+
+    static void Potenciacao()
+    {
+        Console.Clear();
+
+        Console.WriteLine("Insira o numero de base: ");
+        double valorBase = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+
+        Console.WriteLine("Insira o numero de expoente: ");
+        double valorExpoente = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+        double resultado = Math.Pow(valorBase, valorExpoente);
+
+        Console.WriteLine($"O numero {valorBase} elevado a '{valorExpoente}' é igual à: {resultado}");
+
+        Console.ReadKey();
+        Menu();
+    }
+
+    static void Radicializacao()
+    {
+        Console.Clear();
+
+        Console.WriteLine("Insira o numero a ser racionalizado: ");
+        double valorRad = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("");
+
+        double resultadoRad = Math.Sqrt(valorRad);
+
+        Console.WriteLine("");
+
+        Console.WriteLine($"Sua raiz quadrada é: {resultadoRad}");
+
+        Console.ReadKey();
+        Menu();
     }
 }
